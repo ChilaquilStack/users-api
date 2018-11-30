@@ -1,20 +1,21 @@
 "use strict"
-var _ = require('lodash'),
-    app = require('../app'),
-    request = require('supertest'),
-    expect = require('chai').expect,
-    user1 = { 
-        name: 'Edgar Villegas', 
-        email: 'edgar.villegas@jalisco.gob.mx', 
-        password: '123456'
-    }, 
-    user2 = { 
-        name: 'Juan Reynoso', 
-        email: 'juan.reynoso@jalisco.gob.mx', 
-        password: '123456'
-    };
+
+const   _ = require('lodash'),
+        app = require('../app'),
+        db = require('../lib/db'),
+        request = require('supertest'),
+        expect = require('chai').expect,
+        user1 = { name: 'Edgar Villegas', email: 'edgar.villegas@jalisco.gob.mx', password: '123456' }
 
 describe('API', () => {
+
+    after('Truncar la base de datos', () => {
+        
+        db.query('truncate table users', (err, resuls, fields) => {
+            if(err) throw err
+        })
+    
+    })
 
     describe('GET /users', () => {
 
@@ -33,16 +34,19 @@ describe('API', () => {
                     u1 = res.body.user
                     return request(app)
                         .post(url)
-                        .send(user2)
+                        .send(user1)
                         .expect(201)
                         .expect('Content-Type', /json/)
                         .set('Accept', 'application/json')
                 })
                 .then((res) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> mysql
+=======
+>>>>>>> MVC
                     expect(res.body).to.have.property('user')
                     u2 = res.body.user
                     return request(app)
@@ -53,9 +57,13 @@ describe('API', () => {
                 })
                 .then((res) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                     
 >>>>>>> mysql
+=======
+                    
+>>>>>>> MVC
                     let body = res.body
                     expect(body).to.have.property('users')
                     let users = body.users
@@ -67,9 +75,13 @@ describe('API', () => {
                     expect(usr1).to.have.property('email', u1.email)
                     done()
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                 
 >>>>>>> mysql
+=======
+                
+>>>>>>> MVC
                 })
         })
 
@@ -221,6 +233,7 @@ describe('API', () => {
             request(app).post(url).expect(201).set('Accept','application-json').expect('Content-Type', /json/).send(user1)
             .then(res => {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 let url = '/auth'
                 expect(res.body).to.have.property('user')
                 return request(app).post(url).expect(200).set('Accept', 'application-json').expect('Content-Type', /json/).send(res.body.user)
@@ -229,13 +242,18 @@ describe('API', () => {
                 let user = res.body.user
                 expect(user).to.have.property('token')
 =======
+=======
+>>>>>>> MVC
                 let url = '/auth/login'
                 expect(res.body).to.have.property('user')
                 return request(app).post(url).expect(201).set('Accept', 'application-json').expect('Content-Type', /json/).send(user1)
             }).then(res => {
                 expect(res.body).to.have.property('token')
                 done()
+<<<<<<< HEAD
 >>>>>>> mysql
+=======
+>>>>>>> MVC
             })
 
         })

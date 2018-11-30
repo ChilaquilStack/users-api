@@ -1,5 +1,9 @@
 "use strict"
+const   express = require('express'),
+        router = express.Router(),
+        usersCtrl = require('../lib/controllers/UsersController')
 
+<<<<<<< HEAD
 const express = require('express');
 
 const router = express.Router();
@@ -307,5 +311,13 @@ router
 	}	
 
 })
+=======
+router
+.get('/', usersCtrl.index)
+.post('/', usersCtrl.store)
+.get('/:id', usersCtrl.show)
+.delete('/:id', usersCtrl.destroy) 
+.post('/:id', usersCtrl.update)
+>>>>>>> MVC
 
 module.exports = router;
