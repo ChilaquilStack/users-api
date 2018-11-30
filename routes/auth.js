@@ -38,7 +38,8 @@ router.post('/login', (req, res, next) => {
 
 				if(auth.encrypt(send_user.password) === system_user.password) {
 
-					let token = jwt.sign({"id": system_user.id, "email": system_user.email}, 'S3Cr3T', {
+
+					let token = jwt.sign({"id": system_user.id, "email": system_user.email, "name": system_user.name}, 'S3Cr3T', {
 						expiresIn: '24hr'
 					})
 
