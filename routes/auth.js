@@ -1,21 +1,10 @@
 "use strict"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-const express = require('express')
-const router = express.Router()
-const jwt = require('jsonwebtoken')
-
-router.post('/login', (req, res, next) => {
-
-=======
-=======
->>>>>>> MVC
-const jwt = require('jsonwebtoken')
-const express = require('express')
-const router = express.Router()
-const db = require('../lib/db')
-const auth = require('../lib/auth')
+const 	jwt = require('jsonwebtoken'),
+		express = require('express'),
+		router = express.Router(),
+		db = require('../lib/db'),
+		auth = require('../lib/auth')
 
 router.post('/login', (req, res, next) => {
 
@@ -62,10 +51,6 @@ router.post('/login', (req, res, next) => {
 		
 	}
 
-<<<<<<< HEAD
->>>>>>> mysql
-=======
->>>>>>> MVC
 })
 
 router.get('/logout', (req,res,next) => {

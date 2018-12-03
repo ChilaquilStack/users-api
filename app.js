@@ -4,23 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
-<<<<<<< HEAD
-<<<<<<< HEAD
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-=======
-=======
->>>>>>> MVC
 var authMiddleware = require('./lib/middlewares/auth')
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth');
-<<<<<<< HEAD
->>>>>>> mysql
-=======
->>>>>>> MVC
 
 var app = express();
 
@@ -41,17 +28,10 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 app.use('/auth', authRouter);
 
-app.use(authMiddleware)
->>>>>>> mysql
-=======
-app.use('/auth', authRouter);
 //app.use(authMiddleware)
->>>>>>> MVC
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
